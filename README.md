@@ -1,1 +1,4 @@
-<h2>Hello</h2>
+<h1>Hello</h1>
+<Button colorScheme="teal" size="lg">
+    Chakra test
+</Button>
