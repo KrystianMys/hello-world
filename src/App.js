@@ -6,11 +6,14 @@ import { Button } from "@chakra-ui/react";
 function App({ Component, pageProps }) {
   return (
     <Provider>
-      <div>
+      <div class="App App-header">
         <body>
           <h1>Hello World!</h1>
           <Button colorScheme="teal" size="lg">
-            Chakra test
+            Get Started
+          </Button>
+          <Button color="green" bg={"blackAlpha.900"} m={15} colorScheme="purple" size="lg" aria-label="GitHub">
+            <a href="https://github.com/KrystianMys/hello-world">GitHub</a>
           </Button>
         </body>
       </div>
