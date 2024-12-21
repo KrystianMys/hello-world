@@ -1,16 +1,12 @@
+body {
+  margin: 0;
+  height: 100%;
+  background-color: #DAE4DF;
+  font-family: Arial, sans-serif;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -24,149 +20,268 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  color: skyblue;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.Color-botton {
-  color: green;
-}
-
-.button-64 {
-  align-items: center;
-  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 20px;
-  justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 3px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
+.App-header button {
+  color: white;
+  background: skyblue;
+  margin: 5px;
+  width: 300px;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  background-color: skyblue;
+  color: white;
   cursor: pointer;
+  transition: border-color 0.3s ease;
 }
 
-.button-64:active,
-.button-64:hover {
-  outline: 0;
+button:hover {
+  border-color: black;
 }
-
-.button-64 span {
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  transition: 300ms;
-}
-
-.button-64:hover span {
-  background: none;
-}
-
-@media (min-width: 768px) {
-  .button-64 {
-    font-size: 24px;
-    min-width: 196px;
-  }
-}
-
-
 
 .TodoNavbarcss {
-  background-color: #800080;
+  background: linear-gradient(to right, #800080, #4B0082);
   color: white;
   padding: 20px;
-  border-bottom: 2px solid #4b0082;
   font-weight: bold;
   font-size: 24px;
   text-align: center;
+  border-bottom: 2px solid #4B0082;
 }
 
-.sda {
-  margin: 0;
-  font-family: Arial, sans-serif;
+.search-bar {
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  width: 42%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid white;
+  color: black;
+  font-weight: bold;
+  right: 45px;
 }
 
-.skyblue-button {
-  color: darkblue;
-  background-color: purple;
-  margin: 15px;
-  color-scheme: purple;
-  size: large;
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
-body {
-  margin: 0;
-  height: 100%;
-  background-color: #DAE4DF;
+.search-bar input:focus {
+  border-color: skyblue;
+  outline: none;
 }
 
-.todo-header {
-  background-color: #DAE4DF; 
-  height: 75px; 
-  color: white; 
+.todo-list {
+  margin: 20px auto;
+  width: 50%;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.todo-content {
-  background-color: gray; 
-  padding: 27px;
-  height: calc(100% - 100px);
-}
-
-.adding-task-button {
-  position: absolute;
-  left: 0;
-  top: 72px; /* Opcjonalnie ustawia odległość od góry */
-  padding: 10px 20px;
-  color: white;
-  border: none;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px 15px;
 }
 
-.box-overlay {
+.todo-item span {
+  color: black;
+  font-weight: bold;
+}
+
+.todo-item .edit-button,
+.todo-item .delete-button {
+  margin-left: 10px;
+}
+
+.box-overlay,
+.edit-box-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);  /* półprzezroczyste tło */
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;  /* Wyśrodkowanie w poziomie */
-  align-items: center;      /* Wyśrodkowanie w pionie */
-  z-index: 1000;            /* Wyższy poziom, aby modal był nad innymi elementami */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Styl samego okna modal */
-.box-in {
-  background-color: orange;
+.box-in,
+.edit-box-in {
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 500px;
+}
+
+.close-button {
+  background-color: gray;
+  color: white;
+  margin-top: 15px;
+  right: 25px;
+  width: 35%;
+}
+
+.apply-button {
+  background-color: green;
+  color: white;
+  width: 35%;
+  margin-top: 15px;
+  left: 20px;
+}
+
+.todo-item:hover {
+  background: #E6E6FA;
+}
+
+.todo-item.completed span {
+  text-decoration: line-through; 
+  text-decoration-color: red; 
+  text-decoration-thickness: 2px; 
+  color: black; 
+  font-weight: bold; 
+}
+
+.todo-item .checkbox span {
+  color: #333;
+  font-weight: 500;
+}
+
+.todo-item button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todo-item button:hover {
+  opacity: 0.8;
+}
+
+.todo-item button.edit {
+  background: #FFD700;
+  color: #000;
+}
+
+.todo-item button.delete {
+  background: #FF4500;
+  color: #fff;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #000;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  text-align: center;
+}
+
+.modal-content h1 {
+  margin-bottom: 20px;
+  color: #4B0082;
+  font-size: 24px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.modal-content button.close {
+  background: #ccc;
+  color: #333;
+}
+
+.modal-content button.apply {
+  background: #32CD32;
+  color: white;
+}
+
+.modal-content button:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.todo-item .action-buttons {
+  display: flex; 
+  gap: 10px; 
+  align-items: center;
+}
+
+.todo-item .edit-button {
+  background-color: #FFD700; 
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.todo-item .delete-button {
+  background-color: #FF4500; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.todo-item .edit-button:hover,
+.todo-item .delete-button:hover {
+  opacity: 0.8;
+}
+
+.modal-input {
+  color: black;
+  font-weight: bold;
 }

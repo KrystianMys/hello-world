@@ -1,16 +1,16 @@
 import React from "react";
 import TodoNavbar from "./TodoNavbar";
-import TodoAddingTasksButton from "./TodoAddingTasksButton";
+import TodoAction from "./TodoAction";
 
 const Todo = () => {
 
     return (
         <body>
-            <div className="todo-header ">
+            <div className="todo-header">
                 <TodoNavbar />
             </div>
             <div className="todo-content">
-                <TodoAddingTasksButton />
+                <TodoAction />
             </div>
         </body>
     );
