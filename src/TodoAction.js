@@ -86,7 +86,8 @@ const TodoAction = () => {
                     className="add-button"
                     style={{
                         left: "865px",
-                        top: "60px"
+                        top: "60px",
+                        marginLeft: "10px"
                     }}
                 >
                     <FaPlus />
@@ -174,6 +175,3 @@ const TodoAction = () => {
 };
 
 export default TodoAction;
-
-
-
