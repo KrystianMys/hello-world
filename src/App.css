@@ -68,7 +68,6 @@ button:hover {
   border: 2px solid white;
   color: black;
   font-weight: bold;
-  right: 45px;
 }
 
 .search-bar input {
@@ -284,4 +283,35 @@ button:hover {
 .modal-input {
   color: black;
   font-weight: bold;
+}
+
+
+.todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Odstęp między Input a IconButton */
+  margin: 20px auto;
+  width: 50%;
+}
+
+.search-bar {
+  flex: 1; /* Input zajmuje dostępną przestrzeń */
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid white;
+  color: black;
+  font-weight: bold;
+}
+
+.add-button {
+  background-color: skyblue;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: deepskyblue;
 }

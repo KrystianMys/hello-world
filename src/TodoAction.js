@@ -80,24 +80,19 @@ const TodoAction = () => {
     return (
         <Provider>
             <div className="todo-header">
-                <IconButton
-                    aria-label="Add Task"
-                    onClick={() => setIsOpenBox(true)}
-                    className="add-button"
-                    style={{
-                        left: "865px",
-                        top: "60px",
-                        marginLeft: "10px"
-                    }}
-                >
-                    <FaPlus />
-                </IconButton>
                 <Input
                     placeholder="Search Task"
                     value={searchTerm}
                     onChange={handleSearchChange}
                     className="search-bar"
                 />
+                <IconButton
+                    aria-label="Add Task"
+                    onClick={() => setIsOpenBox(true)}
+                    className="add-button"
+                >
+                    <FaPlus />
+                </IconButton>
             </div>
 
             {isOpenBox && (
@@ -107,7 +102,7 @@ const TodoAction = () => {
                             color: "black",
                             fontWeight: "bold"
                         }}>Add your task</h1>
-  
+
                         <Input
                             placeholder="Enter Task Here"
                             value={inputValue}
@@ -137,12 +132,12 @@ const TodoAction = () => {
                             <span>{task.name}</span>
                         </Checkbox>
                         <div className="action-buttons">
-                        <Button onClick={() => handleEditButtonChange(task.id)} className="edit-button" >
-                            <FaEdit />
-                        </Button>
-                        <Button onClick={() => handleDelete(task.id)} className="delete-button" color={"red"} backgroundColor={"blackAlpha.300"}>
-                            <FaRegTrashAlt />
-                        </Button>
+                            <Button onClick={() => handleEditButtonChange(task.id)} className="edit-button" >
+                                <FaEdit />
+                            </Button>
+                            <Button onClick={() => handleDelete(task.id)} className="delete-button" color={"red"} backgroundColor={"blackAlpha.300"}>
+                                <FaRegTrashAlt />
+                            </Button>
                         </div>
                     </div>
                 ))}
@@ -164,7 +159,7 @@ const TodoAction = () => {
                         <Button onClick={handleClickCloseButtonEdit} className="close-button">
                             Close
                         </Button>
-                        <Button onClick={ handleEditSubmit } className="apply-button">
+                        <Button onClick={handleEditSubmit} className="apply-button">
                             Apply
                         </Button>
                     </div>

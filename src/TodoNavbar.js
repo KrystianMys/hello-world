@@ -8,22 +8,24 @@ const TodoNavbar = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="todo-header">
+        <div className="todo-app">
             <h1 style={{
                 color: "skyblue",
                 textAlign: "center",
-                fontSize: "65px",
+                fontSize: "40px",
                 fontWeight: "bold"
             }}>Todo List</h1>
             <Provider>
-            <Button onClick={() => navigate('/hello-world')} style={{
-                color: "white",
-                backgroundColor: "skyblue",
-                bottom: "80px",
-                left: "15px"
-            }}
-            ><GoArrowUpLeft />Back to Home Page</Button>
-        </Provider>
+                <Button onClick={() => navigate('/hello-world')} style={{
+                    color: "white",
+                    backgroundColor: "skyblue",
+                    position: "absolute", /* lub "fixed", jeśli ma pozostać na stałe na ekranie */
+                    top: "15px", /* Odległość od góry */
+                    left: "15px", /* Odległość od lewej krawędzi */
+                    zIndex: 1000 /* Zapewnia, że przycisk będzie na wierzchu */
+                }}
+                ><GoArrowUpLeft />Back to Home Page</Button>
+            </Provider>
         </div >
     );
 }
