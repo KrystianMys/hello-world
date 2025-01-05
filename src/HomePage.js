@@ -1,24 +1,36 @@
 import "./App.css";
-import { Provider } from "@/components/ui/provider";
 import React from "react";
-import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { GoArrowDownRight } from "react-icons/go";
+import { GoToTodoAppButton } from "./components/Buttons/IconButtons/GoToTodoAppButton";
+import { GoToGitHubButton } from "./components/Buttons/CommonButtons/GoToGitHubButton";
+import { Box } from "@chakra-ui/react";
 
-const HomePage = () => {
+export const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <Provider>
-      <div class="App-header">
-        <h1>Welcome to home page</h1>
-        <Button onClick={() => navigate('/new')}>
-          Get Started <GoArrowDownRight />
-        </Button>
-        <Button><a href="https://github.com/KrystianMys/hello-world">GitHub</a></Button>
-      </div>
-    </Provider>
+      <Box style={{
+        backgroundColor: "#DAE4DF",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "calc(10px + 2vmin)",
+        color: "white"
+      }}>
+        <h1 style={{
+          color: "skyblue",
+          position: "absolute",
+          top: "0",
+          left: "50%",
+          transform: "translateX(-50%)",
+          alignItems: "center",
+          fontSize: "50px",
+          fontWeight: "bold"
+        }}>Welcome to home page</h1>
+        <GoToTodoAppButton navigate={ navigate }/>
+        <GoToGitHubButton />
+      </Box>
   );
 };
-
-export default HomePage;

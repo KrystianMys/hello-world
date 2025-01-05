@@ -1,21 +1,30 @@
-import { IconButton, Button, Input } from "@chakra-ui/react";
-import { Provider } from "@/components/ui/provider";
+import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { FaPlus, FaRegTrashAlt, FaEdit } from "react-icons/fa";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SearchTask } from "./components/Inputs/SearchTask";
+import { ChangeInputToAddTask } from "./components/Inputs/ChangeInputToAddTask";
+import { AddATask } from "./components/Buttons/IconButtons/AddATask";
+import { CloseButtonInOpenBox } from "./components/Buttons/CommonButtons/CloseButtonInOpenBox";
+import { ApplyButtonInOpenBox } from "./components/Buttons/CommonButtons/ApplyButtonInOpenBox";
+import { EditButton } from "./components/Buttons/IconButtons/EditButton";
+import { DeleteButton } from "./components/Buttons/IconButtons/DeleteButton";
+import { ChangeInputToEditTask } from "./components/Inputs/ChangeInputToEditTask";
+import { CloseButtonInEditBox } from "./components/Buttons/CommonButtons/CloseButtonInEditBox";
+import { ApplyButtonInEditBox } from "./components/Buttons/CommonButtons/ApplyButtonInEditBox";
 
-const TodoAction = () => {
-    const mocData = [
-        { id: 1, name: 'Read a book', completed: false },
-        { id: 2, name: 'Brush your teeth', completed: false },
-        { id: 3, name: 'Have breakfast', completed: false },
-        { id: 4, name: 'Train JS skills', completed: false },
-        { id: 5, name: 'To dress a Christmas tree', completed: false }
-    ];
+const mocData = [
+    { id: 1, name: 'Read a book', completed: false },
+    { id: 2, name: 'Brush your teeth', completed: false },
+    { id: 3, name: 'Have breakfast', completed: false },
+    { id: 4, name: 'Train JS skills', completed: false },
+    { id: 5, name: 'To dress a Christmas tree', completed: false }
+];
+
+export const TodoAction = () => {
 
     const [inputValue, setInputValue] = useState('');
     const [tasks, setTasks] = useState(mocData);
-    const [isOpenBox, setIsOpenBox] = useState(false);
+    const [isOpenBox, setIsOpenBox] = useState(false); 
     const [isOpenEditBox, setIsOpenEditBox] = useState(false);
     const [editedTaskId, setEditedTaskId] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -78,50 +87,65 @@ const TodoAction = () => {
     }
 
     return (
-        <Provider>
-            <div className="todo-header">
-                <Input
-                    placeholder="Search Task"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    className="search-bar"
-                />
-                <IconButton
-                    aria-label="Add Task"
-                    onClick={() => setIsOpenBox(true)}
-                    className="add-button"
-                >
-                    <FaPlus />
-                </IconButton>
-            </div>
+        <Box>
+            <Box style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                margin: "20px auto",
+                width: "50%"
+            }}>
+                <SearchTask handleSearchChange={handleSearchChange} />
+                <AddATask setIsOpenBox={ setIsOpenBox } />
+            </Box>
 
             {isOpenBox && (
-                <div className="box-overlay">
-                    <div className="box-in">
+                <Box style={{
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    right: "0",
+                    bottom: "0",
+                    background: "rgba(0, 0, 0, 0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: "1000"
+                }}>
+                    <Box style={{
+                        backgroundColor: "white",
+                        padding: "20px",
+                        borderRadius: "8px",
+                        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                        textAlign: "center",
+                        width: "500px",
+                    }}>
                         <h1 style={{
                             color: "black",
                             fontWeight: "bold"
                         }}>Add your task</h1>
 
-                        <Input
-                            placeholder="Enter Task Here"
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            className="modal-input"
-                        />
-                        <Button onClick={handleClickCloseButtonAdd} className="close-button">
-                            Close
-                        </Button>
-                        <Button onClick={handleButtonChange} className="apply-button">
-                            Apply
-                        </Button>
-                    </div>
-                </div>
+                        <ChangeInputToAddTask inputValue={inputValue} handleInputChange={ handleInputChange } />
+
+                        <CloseButtonInOpenBox handleClickCloseButtonAdd={ handleClickCloseButtonAdd } />
+
+                        <ApplyButtonInOpenBox handleButtonChange={ handleButtonChange } />
+
+                    </Box>
+                </Box>
             )}
 
-            <div className="todo-list">
+            <Box style={{
+                margin: "20px auto",
+                width: "50%",
+                backgroundColor: "white",
+                borderRadius: "8px",
+                padding: "20px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+            }}>
                 {filteredTasks.map((task) => (
-                    <div
+                    <Box
                         key={task.id}
                         className={`todo-item ${task.completed ? 'completed' : ''}`}
                     >
@@ -131,42 +155,56 @@ const TodoAction = () => {
                         >
                             <span>{task.name}</span>
                         </Checkbox>
-                        <div className="action-buttons">
-                            <Button onClick={() => handleEditButtonChange(task.id)} className="edit-button" >
-                                <FaEdit />
-                            </Button>
-                            <Button onClick={() => handleDelete(task.id)} className="delete-button" color={"red"} backgroundColor={"blackAlpha.300"}>
-                                <FaRegTrashAlt />
-                            </Button>
-                        </div>
-                    </div>
+                        <Box style={{
+                            display: "flex",
+                            gap: "10px",
+                            alignItems: "center"
+                        }}>
+                           
+                            <EditButton handleEditButtonChange={ handleEditButtonChange } task={ task } />
+
+                            <DeleteButton handleDelete={ handleDelete } task={ task } />
+
+                        </Box>
+                    </Box>
                 ))}
-            </div>
+            </Box>
 
             {isOpenEditBox && (
-                <div className="edit-box-overlay">
-                    <div className="edit-box-in">
+                <Box style={{
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    right: "0",
+                    bottom: "0",
+                    background: "rgba(0, 0, 0, 0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: "1000"
+                }}  >
+                    <Box style={{
+                        backgroundColor: "white",
+                        padding: "20px",
+                        borderRadius: "8px",
+                        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                        textAlign: "center",
+                        width: "500px"
+                    }}>
                         <h1 style={{
                             color: "black",
                             fontWeight: "bold"
                         }}>Edit Task</h1>
-                        <Input
-                            placeholder="Enter Edit Task Here"
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            className="modal-input"
-                        />
-                        <Button onClick={handleClickCloseButtonEdit} className="close-button">
-                            Close
-                        </Button>
-                        <Button onClick={handleEditSubmit} className="apply-button">
-                            Apply
-                        </Button>
-                    </div>
-                </div>
+                        
+                        <ChangeInputToEditTask inputValue={ inputValue } handleInputChange={ handleInputChange } />
+
+                        <CloseButtonInEditBox handleClickCloseButtonEdit={ handleClickCloseButtonEdit }/>
+
+                        <ApplyButtonInEditBox handleEditSubmit={ handleEditSubmit } />
+
+                    </Box>
+                </Box>
             )}
-        </Provider>
+        </Box>
     );
 };
-
-export default TodoAction;
